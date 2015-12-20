@@ -1,0 +1,10 @@
+<p>
+  <h1>Activites List</h1>
+  <% if @activities.empty? %>
+    <div>No activities present</div>
+  <% else %>
+    <% @activities.each do |a| %>
+      <div><%= p a.content.to_s %></div>
+    <% end %>
+  <% end %>
+</p>

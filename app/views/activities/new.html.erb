@@ -1,0 +1,6 @@
+<% form_for @activity do |a| %>
+  <%= a.errors.map(&:to_s) if a.errors.any? %>
+  <%= a.label_field %>
+  <%= a.text_field %>
+  <%= a.submit %>
+<% end %>
