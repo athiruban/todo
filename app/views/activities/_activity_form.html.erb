@@ -1,4 +1,18 @@
 
+<% if @item.present? %>
+<div class="row">
+  <div class="col-md-6">
+    <%= form_for(@item) do |a| %>
+      <%= a.label "What to track?", :class => "app-private" %>
+      <%= a.text_area :content, class: 'form-control', rows: "3" %>
+      <br>
+      <%= a.submit "Add To Timeline", class: 'btn btn-primary app-private' %>
+    <% end %>
+  </div>
+</div>
+<br>
+<% end %>
+
 <div class="row">
   <% if @activities.empty? %>
     <div class="app-private">No activities present</div>
@@ -9,8 +23,10 @@
         <%= link_to "Open", open_activity_url(a), :class => "btn btn-primary app-private" if a.closed? %>
         <%= link_to "Edit", edit_activity_url(a), :class => "btn btn-primary app-private" %>
       </div>
-      <div class="well"><%= simple_format(h a.content.to_s) %></div>
-      <p class="app-private">- created on <%= "#{a.created_at}" %></p>
+      <div class="well"><%= simple_format(h a.content.to_s) %>
+        <div>created <i><%= "#{Time.parse(a.created_at.inspect).httpdate}" %></i></div>
+      </div>
+      
     <% end %>
   <% end %>
 </div>

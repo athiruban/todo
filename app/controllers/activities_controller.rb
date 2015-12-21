@@ -1,6 +1,7 @@
 class ActivitiesController < ApplicationController
 	def index
     @activities = Activity.all
+    @item = Activity.new
 	end
 
   def new
@@ -16,10 +17,10 @@ class ActivitiesController < ApplicationController
     activity.update_attributes(:status => "open")
     if activity.save
       flash['success'] = "Activity created sucessfully"
-      redirect_to dashboard_path
+      redirect_to activities_path
     else
       flash['danger'] = "Activity creation failed"
-      redirect_to new_activity_path
+      redirect_to :back
     end
   end
 
@@ -28,7 +29,7 @@ class ActivitiesController < ApplicationController
     activity.update_attributes(:content => params[:activity][:content])
     if activity.save!
       flash['success'] = "Activity updated sucessfully"
-      redirect_to dashboard_path
+      redirect_to activities_path
     else
       flash['danger'] = "Activity creation failed"
       redirect_to edit_activity_url(params[:id])
@@ -51,7 +52,7 @@ class ActivitiesController < ApplicationController
     else
       flash['danger'] = "No activity present"
     end
-    redirect_to dashboard_path
+    redirect_to activities_path
   end
 
   def pending
@@ -70,7 +71,7 @@ class ActivitiesController < ApplicationController
     else
       flash['danger'] = "No activity present"
     end
-    redirect_to dashboard_path
+    redirect_to activities_path
   end
 
   private

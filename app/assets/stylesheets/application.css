@@ -33,21 +33,21 @@ body {
 
 h1, h4, .app-private, p, .well {
   color: white !important;
-  background:  #111111 !important;
+  background:  black !important;
 }
 
 .well p {
   background:  #222222 !important;  
 }
 
-/*.well {
-  padding-bottom: 0.5em !important;
-}*/
-
 .container {
   padding-bottom: 0em !important;  
 }
 /* Bootstrap specific styles */
+
+div {
+  border-color: light_blue !important;
+}
 
 /*
  * Base structure
