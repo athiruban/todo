@@ -26,7 +26,18 @@ Rails.application.routes.draw do
   #     end
   #   end
 
-  resources :activities
+  get "dashboard" => "activities#index"
+
+  resources :activities do
+    member do
+      get 'close'
+      get 'open'
+    end
+
+    collection do 
+      get "pending"
+    end
+  end
   
   # Example resource route with sub-resources:
   #   resources :products do

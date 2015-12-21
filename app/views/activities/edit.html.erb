@@ -1,14 +1,12 @@
-<h1 class="page-header">New activity</h1>
+<h1 class="page-header">Quick edit</h1>
 
 <div class="row">
   <div class="col-md-6">
     <%= form_for(@activity) do |a| %>
       <%= a.label :content, :class => "app-private" %>
       <%= a.text_area :content, class: 'form-control' %>
-
       <br>
-      <%= a.submit "Add To Timeline", class: 'btn btn-primary app-private' %>
-
+      <%= a.submit "Update this activity", class: 'btn btn-primary app-private' %>
     <% end %>
   </div>
 </div>

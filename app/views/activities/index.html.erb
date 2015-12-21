@@ -1,10 +1,12 @@
-<p>
-  <h1>Activites List</h1>
-  <% if @activities.empty? %>
-    <div>No activities present</div>
-  <% else %>
-    <% @activities.each do |a| %>
-      <div><%= p a.content.to_s %></div>
-    <% end %>
-  <% end %>
-</p>
+
+<h1 class="page-header">All activites</h1>
+
+<%= render "activities/activity_form" %>
+
+
+<!--   <div class='btn-toolbar pull-right'>  
+    <div class='btn-group'>
+        
+        <button type='button' class='btn btn-primary'>Relate</button>
+    </div>
+  </div> -->
