@@ -14,7 +14,7 @@ class ActivitiesController < ApplicationController
   def create
     activity = Activity.new(activity_params)
     activity.update_attributes(:status => "open")
-    if activity.save!
+    if activity.save
       flash['success'] = "Activity created sucessfully"
       redirect_to dashboard_path
     else

@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   #     end
   #   end
 
-  get "dashboard" => "activities#index"
+  get "dashboard" => "dashboard#view"
 
   resources :activities do
     member do
@@ -36,6 +36,7 @@ Rails.application.routes.draw do
 
     collection do 
       get "pending"
+      get "closed"
     end
   end
   
