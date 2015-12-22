@@ -47,7 +47,7 @@
       </div>
     </nav>
     <div class="container theme-showcase" role="main">
-      <div class="page-header app-private">Minion is here to assist you!</div>
+      <div class="page-header" style="visibility: hidden;">We understand you</div>
       <% if flash.any? %>
         <% flash.each do |key, value| %>
           <div class='<%="alert alert-#{key} app-private"%>' role="alert"><%= value %></div>
