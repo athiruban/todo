@@ -18,15 +18,16 @@
     <div class="app-private">No activities present</div>
   <% else %>
     <% @activities.each do |a| %>
+      <% if false %>
       <div class="btn-group">
         <%= link_to "Close", close_activity_url(a), :class => "btn btn-primary app-private" if !a.closed? %>
         <%= link_to "Open", open_activity_url(a), :class => "btn btn-primary app-private" if a.closed? %>
         <%= link_to "Edit", edit_activity_url(a), :class => "btn btn-primary app-private" %>
       </div>
-      <div class="well"><%= simple_format(h a.content.to_s) %>
-        <div>created <i><%= "#{Time.parse(a.created_at.inspect).httpdate}" %></i></div>
+      <% end  %>
+      <div class="well draggable-element"><%= simple_format(h a.content.to_s) %>
+        <div class="dt">created <i><%= "#{Time.parse(a.created_at.inspect).httpdate}" %></i></div>
       </div>
-      
     <% end %>
   <% end %>
 </div>

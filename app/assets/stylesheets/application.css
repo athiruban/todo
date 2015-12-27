@@ -15,6 +15,10 @@
  *= require bootstrap.min
  */
 
+#app-body {
+  background-color: white !important;
+}
+
 .error, .alert, .notice, .success, .info {
   padding: 0.8em;
   margin-bottom: 1em;
@@ -28,27 +32,38 @@
 }
 
 body {
-   background: #22872e !important; 
+  /* background: #22572e !important; */
+   background: #E9E9E9 !important; 
 }
 
-h1, h4, .app-private, p, .well {
+.well {
+  padding: 10px !important;
+  float: left !important;
+  display: inline-block !important;
+  white-space: nowrap !important;
+}
+
+h1, h4, h6, .app-private, p, .well, textarea {
   color: black !important;
-/*  background:  #fefefe !important;*/
+  background:  #FDFDA7 !important;
 }
 
 .app-private {
-   background: #efefef !important; 
-/*   color: black !important;*/
+   font-size: 11px !important;
 }
 
 .app-white, h4 {
-  color: #dddddd !important;
+  color: black !important;
 }
 
 .well p {
 /*  background:  #222222 !important;  */
   padding: 0em !important;
   border: 0em !important;
+}
+
+.well .dt {
+  font-size: 11px !important;
 }
 
 .container {
