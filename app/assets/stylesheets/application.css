@@ -15,63 +15,91 @@
  *= require bootstrap.min
  */
 
-#app-body {
+#app-body{
   background-color: white !important;
 }
 
-.error, .alert, .notice, .success, .info {
+.error, .alert, .notice, .success, .info{
   padding: 0.8em;
   margin-bottom: 1em;
   border: 2px solid #ddd;
 }
 
-.success {
+.success{
   background: #e6efc2; 
   color: #264409;
   border-color: #c6d880;
 }
 
-body {
+body{
   /* background: #22572e !important; */
    background: #E9E9E9 !important; 
 }
 
-.well {
+.well{
   padding: 10px !important;
   float: left !important;
+  height: 100px !important;
+  overflow: hidden;
   display: inline-block !important;
   white-space: nowrap !important;
 }
 
-h1, h4, h6, .app-private, p, .well, textarea {
+/*#activity_dialog{
+  padding: 10px !important;
+  display: block !important;
+}
+
+#activity_dialog .well{
+  width: 640px !important;
+  height: 480px !important;
+  overflow: auto !important;
+}
+*/
+.well:hover{
+  overflow: auto;
+}
+
+h4, h6, .app-private, p, .well{
   color: black !important;
   background:  #FDFDA7 !important;
 }
 
-.app-private {
+textarea{
+  color: black !important;
+  background: #EEEEEE !important;
+}
+
+.app-private{
    font-size: 11px !important;
 }
 
-.app-white, h4 {
+.app-button{
+  color: white !important;
+  background: #0095DD !important;
+}
+
+.app-white, h4{
   color: black !important;
 }
 
-.well p {
+.well p{
 /*  background:  #222222 !important;  */
   padding: 0em !important;
   border: 0em !important;
+  word-wrap: break-work;
 }
 
-.well .dt {
+.well .dt{
   font-size: 11px !important;
 }
 
-.container {
+.container{
   padding-bottom: 0em !important;  
 }
 /* Bootstrap specific styles */
 
-div {
+div{
   border-color: light_blue !important;
 }
 
@@ -80,7 +108,7 @@ div {
  */
 
 /* Move down content because we have a fixed navbar that is 50px tall */
-body {
+body{
   padding-top: 10px;
 }
 
@@ -89,7 +117,7 @@ body {
  * Global add-ons
  */
 
-.sub-header {
+.sub-header{
   padding-bottom: 10px;
   border-bottom: 1px solid #eee;
 }

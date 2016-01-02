@@ -19,3 +19,25 @@
   $(function() {
     $( ".draggable-element" ).arrangeable();
   });
+
+  $(document).ready(function(){
+    $(".activity_item").click(function(){
+      activityHtml = $(this).html();
+      $("<div class='row' id='activity_dialog'>"+activityHtml+"</div>").bPopup({
+          easing: 'easeOutBack',
+          speed: 450,
+          transition: 'slideDown'
+      });
+      // $("<div></div>").dialog({
+      //     modal: true,
+      //     open: function(){
+      //       $(this).html(activityHtml);
+      //     },
+      //     buttons: {
+      //         Ok: function(){
+      //           $(this).dialog("close");
+      //         }
+      //     }
+      // });  
+    });
+  });

@@ -1,0 +1,14 @@
+
+<% if @item.present? %>
+<div class="row">
+  <div class="col-md-6">
+    <%= form_for(@item) do |a| %>
+      <%= a.label "What to track?", class: 'app-white' %>
+      <%= a.text_area :content, class: 'form-control', rows: "3" %>
+      <br>
+      <%= a.submit "Add To Timeline", class: 'btn btn-primary app-private app-button' %>
+    <% end %>
+  </div>
+</div>
+<br>
+<% end %>

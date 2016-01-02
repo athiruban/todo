@@ -1,13 +1,2 @@
 
-<div class="row">
-  <div class="col-md-6">
-    <%= form_for(@activity) do |a| %>
-      <%= a.label "What to track?", :class => "app-white" %>
-      <%= a.text_area :content, class: 'form-control' %>
-
-      <br>
-      <%= a.submit "Add To Timeline", class: 'btn btn-primary app-private' %>
-
-    <% end %>
-  </div>
-</div>
+<%= render "new_activity_form" %>

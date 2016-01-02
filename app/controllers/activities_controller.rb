@@ -5,7 +5,7 @@ class ActivitiesController < ApplicationController
 	end
 
   def new
-    @activity = Activity.new    
+    @item = Activity.new    
   end
 
   def edit
