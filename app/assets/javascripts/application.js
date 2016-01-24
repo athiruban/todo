@@ -16,28 +16,72 @@
 //= require_tree .
 //= require bootstrap.min
 
-  $(function() {
-    $( ".draggable-element" ).arrangeable();
+$(function() {
+  $( ".draggable-element" ).arrangeable();
+});
+
+
+var diff_date = function(from, to) {
+  var oneDay = 24 * 60 * 60 * 1000;
+  console.log("Inside diff_date : " + from + " : " + to)
+  return Math.round(Math.abs((from - to.getTime())/oneDay));
+}
+
+$(document).ready(function(){
+
+  // auto fadeout the alert messages after 5 seconds timeout
+  $(".alert").fadeOut(10000);
+
+  // color div elements based on yellow, orange and red
+
+  $("div").find(".activity_item").each(function(index){
+    //console.log(index + ": " + $(this).text());
   });
 
-  $(document).ready(function(){
-    $(".activity_item").click(function(){
-      activityHtml = $(this).html();
-      $("<div class='row' id='activity_dialog'>"+activityHtml+"</div>").bPopup({
-          easing: 'easeOutBack',
-          speed: 450,
-          transition: 'slideDown'
-      });
-      // $("<div></div>").dialog({
-      //     modal: true,
-      //     open: function(){
-      //       $(this).html(activityHtml);
-      //     },
-      //     buttons: {
-      //         Ok: function(){
-      //           $(this).dialog("close");
-      //         }
-      //     }
-      // });  
-    });
+  $("div").find(".activity_item").each(function(index){
+    // change background color based on the postion value
+    // Yellow #FDFDA7 
+    // Orange #FF7F00
+    // Red    #FE5C5C
+    console.log("Hidden field : " + $(this).find("input:hidden[name='activity[created_at]']").val());
+
+    value = $(this).find("input:hidden[name='activity[created_at]']").val();
+    created_date = Date.parse(value);
+
+    console.log(index + " : " + value);
+
+    todays_date = new Date();
+    absolute_diff = diff_date(created_date, todays_date);
+
+    if (absolute_diff > 10) {
+      $(this).addClass("red_activity");
+    }
+    else if (absolute_diff > 5) {
+      $(this).addClass("yellow_activity");
+    }
+    else {
+      $(this).addClass("green_activity");
+    }
+    console.log("Diff : " + absolute_diff);
   });
+
+  $(".activity_item").click(function(){
+    activityHtml = $(this).html();
+    $("<div class='row' id='activity_dialog'>"+ activityHtml +"</div>").bPopup({
+        easing: 'easeOutBack',
+        speed: 450,
+        transition: 'slideDown'
+    });
+    // $("<div></div>").dialog({
+    //     modal: true,
+    //     open: function(){
+    //       $(this).html(activityHtml);
+    //     },
+    //     buttons: {
+    //         Ok: function(){
+    //           $(this).dialog("close");
+    //         }
+    //     }
+    // });  
+  });
+});

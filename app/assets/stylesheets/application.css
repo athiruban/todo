@@ -60,9 +60,24 @@ body{
   overflow: auto;
 }
 
-h4, h6, .app-private, p, .well{
+h4, h6, .app-private, .well, .well p {
   color: black !important;
   background:  #FDFDA7 !important;
+}
+
+.green_activity, .green_activity p {
+ color: black !important;
+  background:  #FDFDA7 !important; 
+}
+
+.yellow_activity, .yellow_activity p {
+ color: black !important;
+  background: #FF7F00 !important; 
+}
+
+.red_activity, .red_activity p {
+ color: black !important;
+  background:  #FE5C5C !important; 
 }
 
 textarea{

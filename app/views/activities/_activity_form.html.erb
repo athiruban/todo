@@ -4,22 +4,23 @@
   <% if @activities.empty? %>
     <div class="app-private">No activities present</div>
   <% else %>
-    <% @activities.each do |a| %>
+    <% @activities.each do |activity| %>
       <% if false %>
       <div class="btn-group">
-        <%= link_to "Close", close_activity_url(a), :class => "btn btn-primary app-private" if !a.closed? %>
-        <%= link_to "Open", open_activity_url(a), :class => "btn btn-primary app-private" if a.closed? %>
-        <%= link_to "Edit", edit_activity_url(a), :class => "btn btn-primary app-private" %>
+        <%= link_to "Close", close_activity_url(activity), :class => "btn btn-primary app-private" if !activity.closed? %>
+        <%= link_to "Open", open_activity_url(activity), :class => "btn btn-primary app-private" if activity.closed? %>
+        <%= link_to "Edit", edit_activity_url(activity), :class => "btn btn-primary app-private" %>
       </div>
       <% end %>
-      <div class="well activity_item draggable-element col-sm-3 col-md-3 col-lg-3"><%= simple_format(h a.content.to_s) %>
-<!--         <div class="dt"> -->
-          <i>
-            <% if false %>
-              <%= "created #{Time.parse(a.created_at.inspect).httpdate}" %>
-            <% end %>
-          </i>
-<!--         </div> -->
+      <div class="well activity_item draggable-element col-sm-3 col-md-3 col-lg-3">
+        <%= hidden_field(:activity, :position, :value => activity.position) %>
+        <%= hidden_field(:activity, :created_at, :value => activity.created_at.to_date) %>
+        <%= simple_format(h activity.content.to_s) %>
+        <i>
+          <% if false %>
+            <%= "created #{Time.parse(activity.created_at.inspect).httpdate}" %>
+          <% end %>
+        </i>
       </div>
     <% end %>
   <% end %>
