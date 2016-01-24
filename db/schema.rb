@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151220215541) do
+ActiveRecord::Schema.define(version: 20160124024123) do
 
   create_table "activities", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "content",    limit: 2048
     t.string   "status"
+    t.integer  "position"
   end
 
 end
