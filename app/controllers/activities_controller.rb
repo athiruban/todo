@@ -1,4 +1,6 @@
 class ActivitiesController < ApplicationController
+  include ActivityConstants
+
 	def index
     @activities = Activity.all
     @item = Activity.new
@@ -62,7 +64,7 @@ class ActivitiesController < ApplicationController
   def open
     activity = Activity.find_by_id(params[:id])
     if activity.present?
-      activity.update_attributes(:status => "open")
+      activity.update_attributes(:status => ACTIVITY_STATUS[:open])
       if activity.save!
         flash['success'] = "Activity updated"
       else
