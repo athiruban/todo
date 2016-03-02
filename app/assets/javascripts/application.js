@@ -16,6 +16,15 @@
 //= require_tree .
 //= require bootstrap.min
 
+function overlay() {
+  el = document.getElementById("overlay");
+  el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+  $("div").find(".activity_item").each(function(index){
+    $("#overlay").append($(this).html());
+  });
+
+}
+
 $(function() {
   $( ".draggable-element" ).arrangeable();
 });
@@ -66,12 +75,16 @@ $(document).ready(function(){
   });
 
   $(".activity_item").click(function(){
-    activityHtml = $(this).html();
-    $("<div class='row' id='activity_dialog'>"+ activityHtml +"</div>").bPopup({
-        easing: 'easeOutBack',
-        speed: 450,
-        transition: 'slideDown'
-    });
+    // activityHtml = "<div class='row' id='activity_dialog'>" + $(this).html() + "</div>";
+
+    // // first_html = "<div class='overlay'><div class='container'>";
+    // // last_html = "</div></div></div>";
+
+    // $(activityHtml).bPopup({
+    //     easing: 'easeOutBack',
+    //     speed: 450,
+    //     transition: 'slideDown'
+    // });
     // $("<div></div>").dialog({
     //     modal: true,
     //     open: function(){

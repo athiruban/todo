@@ -10,6 +10,6 @@ class CreateActivityTest < ActionDispatch::IntegrationTest
 
   test "should show the activities list in descending order" do
   	get "activities#index"
-  	assert @activities.count == 0
+  	assert_response :success
   end
 end
