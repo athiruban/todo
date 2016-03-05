@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-  include ActivityConstants
+  include Activity::Constants
 
 	def index
     @activities = Activity.all
@@ -74,6 +74,10 @@ class ActivitiesController < ApplicationController
       flash['danger'] = "No activity present"
     end
     redirect_to activities_path
+  end
+
+  def search
+    
   end
 
   private

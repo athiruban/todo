@@ -1,4 +1,4 @@
-module ActivityConstants
+module Activity::Constants
   ACTIVITY_STATUS = {
     :open     => 1,
     :pending  => 2,

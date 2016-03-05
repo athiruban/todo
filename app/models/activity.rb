@@ -1,5 +1,5 @@
 class Activity < ActiveRecord::Base
-  include ActivityConstants
+  include Activity::Constants
 
   belongs_to :category
   

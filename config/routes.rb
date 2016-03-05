@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     collection do 
       get "pending"
       get "closed"
+      get "search"
     end
   end
   
