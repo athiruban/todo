@@ -2,10 +2,22 @@
 <div class="row">
   <div class="col-md-6">
     <%= form_for(@activity) do |a| %>
-      <%= a.label :content, :class => "app-white" %>
-      <%= a.text_area :content, class: 'form-control', rows: 10 %>
-      <br>
-      <%= a.submit "Update this activity", class: 'btn btn-primary app-private' %>
+      <p>
+        <%= a.label :content, :class => "app-white" %>
+        <%= a.text_area :content, class: 'form-control', rows: 7 %>
+      </p>
+
+      <p>
+        <%= a.label :status, :class => "app-white" %>
+        <%= select_tag(:status, options_for_select(Activity::Constants::ACTIVITY_STATUS.map{|k,v| [k, v]}, (@activity.status || 1))) %>
+      </p>
+      
+      <p>
+        <%= a.label :priority, :class => "app-white" %>
+        <%= select_tag(:priority, options_for_select((-15..10).map{|e| [e, e]}, (@activity.priority || 17))) %>
+      </p>
+
+      <%= a.submit "Update", class: 'btn btn-primary app-private' %>
     <% end %>
   </div>
 </div>

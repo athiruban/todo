@@ -17,13 +17,22 @@
 
 <% if @item.present? %>
   <div class="row">
-    <div class="container collapse" id='new_activity_form'>
+    <div class="container collapse in" id='new_activity_form'>
       <div class="col-md-6">
         <p>
         <%= form_for(@item) do |a| %>
           <%= a.label "Please enter task to track!", class: 'app-white' %>
           <%= a.text_area :content, class: 'form-control', rows: "3" %>
           <br>
+          <p>
+            <%= a.label :status, :class => "app-white" %>
+            <%= select_tag(:status, options_for_select(Activity::Constants::ACTIVITY_STATUS.map{|k,v| [k, v]}, 1)) %>
+          </p>
+          
+          <p>
+            <%= a.label :priority, :class => "app-white" %>
+            <%= select_tag(:priority, options_for_select((-15..10).map{|e| [e, e]}, 1)) %>
+          </p>
           <%= a.submit "Submit", class: 'btn btn-primary app-private app-button' %>
         <% end %>
         </p>
