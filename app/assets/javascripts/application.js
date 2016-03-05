@@ -38,6 +38,13 @@ var diff_date = function(from, to) {
 
 $(document).ready(function(){
 
+  $('#activity_search').keydown(function(event) {
+    if (event.keyCode == 13) {
+        this.form.submit();
+        return false;
+     }
+    });
+
   // auto fadeout the alert messages after 5 seconds timeout
   $(".alert").fadeOut(10000);
 

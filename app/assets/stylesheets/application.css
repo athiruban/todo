@@ -80,6 +80,20 @@ body{
   overflow: auto;
 }
 
+.activity_buttons{
+  position: relative;
+  padding-top: -10px;
+  float: right;
+}
+
+.activity_item .activity_buttons .activity_button {
+  visibility: hidden;
+}
+
+.activity_item:hover .activity_buttons .activity_button {
+  visibility: visible;
+}
+
 h4, h6, .app-private, .well, .well p {
   color: black !important;
   background:  #FDFDA7 !important;
@@ -246,3 +260,13 @@ body{
   display: inline-block;
   border-radius: 50%;
 }
+
+.activity_header{
+  background: white !important;
+  border-bottom: #909090 solid thin;
+}
+
+/*#activity_search_bar{
+  position: relative;
+  float: right;
+}*/

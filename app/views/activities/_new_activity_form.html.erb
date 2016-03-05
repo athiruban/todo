@@ -1,14 +1,34 @@
 
-<% if @item.present? %>
-<div class="row">
-  <div class="col-md-6">
-    <%= form_for(@item) do |a| %>
-      <%= a.label "What to track?", class: 'app-white' %>
-      <%= a.text_area :content, class: 'form-control', rows: "3" %>
-      <br>
-      <%= a.submit "Add To Timeline", class: 'btn btn-primary app-private app-button' %>
-    <% end %>
-  </div>
+<a class="btn" data-toggle="collapse" data-target="#new_activity_form">
+  <%= image_tag "activity_add.png" %>
+</a>
+
+<a class="btn" data-toggle="collapse" data-target="#activity_search_bar">
+  <%= image_tag "activity_search.png" %>
+</a>
+
+<div class="container collapse" id="activity_search_bar">
+  <p>
+    <form name="search_form" method="get" action="/activities/search" target="_self">
+      <input id="activity_search" type="text" name="activity_search" size="40"/>
+    </form>
+  </p>
 </div>
-<br>
+
+<% if @item.present? %>
+  <div class="row">
+    <div class="container collapse" id='new_activity_form'>
+      <div class="col-md-6">
+        <p>
+        <%= form_for(@item) do |a| %>
+          <%= a.label "Please enter task to track!", class: 'app-white' %>
+          <%= a.text_area :content, class: 'form-control', rows: "3" %>
+          <br>
+          <%= a.submit "Submit", class: 'btn btn-primary app-private app-button' %>
+        <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <br>
 <% end %>

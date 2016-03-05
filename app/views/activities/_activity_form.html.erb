@@ -6,30 +6,41 @@
   <% else %>
     <% index = 0 %>
     <% @activities.group_by{|e| e.created_at.to_date}.each do |c_date, activity_arr| %>
-      
-      
-        <h4> <a class="btn" data-toggle="collapse" data-target='<%= "#date-#{index}" %>' > <%= c_date.to_s %> </a></h4>
-        <div class="container collapse" id='<%= "date-#{index}" %>' >
-        <% activity_arr.each do |activity| %>
-          <% if false %>
-            <div class="btn-group">
-              <%= link_to "Close", close_activity_url(activity), :class => "btn btn-primary app-private" if !activity.closed? %>
-              <%= link_to "Open", open_activity_url(activity), :class => "btn btn-primary app-private" if activity.closed? %>
-              <%= link_to "Edit", edit_activity_url(activity), :class => "btn btn-primary app-private" %>
+        <h4 class="activity_header"> 
+          <a class="btn" data-toggle="collapse" data-target='<%= "#date-#{index}" %>' > 
+            <%= Activity::DateFormater.format_time(c_date) %> 
+          </a>
+        </h4>
+        <div class="container collapse in" id='<%= "date-#{index}" %>' >
+          <% activity_arr.each do |activity| %>
+            <% if false %>
+              <div class="btn-group">
+                  <% if !activity.closed? %>
+                    <%= link_to "Close", close_activity_url(activity), :class => "btn btn-primary app-private" %> 
+                  <% end %>
+                  <% if activity.closed? %>
+                    <%= link_to "Open", open_activity_url(activity), :class => "btn btn-primary app-private" %>
+                  <% end %>
+                <%= link_to "Edit", edit_activity_url(activity), :class => "btn btn-primary app-private" %>
+              </div>
+            <% end %>
+            <div class="well activity_item draggable-element col-sm-3 col-md-3 col-lg-3">
+              <span class="activity_buttons"> 
+                <a class="activity_button" href=<%= edit_activity_url(activity) %>> <%= image_tag "activity_edit.png" %> </a>
+              </span>
+              <%= hidden_field(:activity, :priority, :value => activity.priority) %>
+              <%= hidden_field(:activity, :created_at, :value => activity.created_at.to_date) %>
+              <p>
+              <%= simple_format(h activity.content.to_s) %>
+              </p>
+              <i>
+                <% if false %>
+                  <%= "created #{Time.parse(activity.created_at.inspect).httpdate}" %>
+                <% end %>
+              </i>
             </div>
           <% end %>
-          <div class="well activity_item draggable-element col-sm-3 col-md-3 col-lg-3">
-            <%= hidden_field(:activity, :priority, :value => activity.priority) %>
-            <%= hidden_field(:activity, :created_at, :value => activity.created_at.to_date) %>
-            <%= simple_format(h activity.content.to_s) %>
-            <i>
-              <% if false %>
-                <%= "created #{Time.parse(activity.created_at.inspect).httpdate}" %>
-              <% end %>
-            </i>
-          </div>
-        <% end %>
-      </div>
+        </div>
       <% index = index + 1 %>
     <% end %>
   <% end %>
